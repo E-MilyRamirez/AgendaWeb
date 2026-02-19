@@ -22,5 +22,28 @@ namespace AgendaWeb.Data.Commands
             };
             return _sqlServer.NonQuery(query, parameters);
         }
+
+        public int EliminarContacto(int id)
+        {
+            string query = "DELETE FROM Contactos WHERE Id = @Id";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@Id", id)
+            };
+            return _sqlServer.NonQuery(query, parameters);
+        }
+
+        public int ActualizarContacto(int id, string nombre, string telefono, string email)
+        {
+            string query = "UPDATE Contactos SET Nombre = @Nombre, Telefono = @Telefono, Email = @Email WHERE Id = @Id";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@Id", id),
+                new SqlParameter("@Nombre", nombre),
+                new SqlParameter("@Telefono", telefono),
+                new SqlParameter("@Email", email)
+            };
+            return _sqlServer.NonQuery(query, parameters);
+        }
     }
 }
