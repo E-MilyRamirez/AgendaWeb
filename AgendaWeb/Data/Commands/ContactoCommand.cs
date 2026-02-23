@@ -13,7 +13,10 @@ namespace AgendaWeb.Data.Commands
 
         public int InsertarContacto(string nombre, string telefono, string email)
         {
-            string query = "INSERT INTO Contactos (Nombre, Telefono, Email) VALUES (@Nombre, @Telefono, @Email)";
+            string query = "INSERT INTO Contactos" +
+                " (Nombre, Telefono, Email) " +
+                "VALUES " +
+                "(@Nombre, @Telefono, @Email)";
             SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@Nombre", nombre),
@@ -35,7 +38,12 @@ namespace AgendaWeb.Data.Commands
 
         public int ActualizarContacto(int id, string nombre, string telefono, string email)
         {
-            string query = "UPDATE Contactos SET Nombre = @Nombre, Telefono = @Telefono, Email = @Email WHERE Id = @Id";
+            string query = "UPDATE Contactos " +
+                "SET" +
+                " Nombre = @Nombre, " +
+                "Telefono = @Telefono, " +
+                "Email = @Email " +
+                "WHERE Id = @Id";
             SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@Id", id),
