@@ -32,13 +32,13 @@ namespace AgendaWeb.Services
             return _contactoCommand.EliminarContacto(id);
         }
 
-        public int ActualizarContacto(int id, ContactoNuevoDto contactoNuevoDto)
+        public int ActualizarContacto(int id, ContactoActualizarDto contactoActualizarDto)
         {
             Contacto contacto = new Contacto
             {
-                Nombre = contactoNuevoDto.Nombre,
-                Telefono = contactoNuevoDto.Telefono,
-                Email = contactoNuevoDto.Email
+                Nombre = contactoActualizarDto.Nombre,
+                Telefono = contactoActualizarDto.Telefono,
+                Email = contactoActualizarDto.Email
             };
             return _contactoCommand.ActualizarContacto(id, contacto);
         }

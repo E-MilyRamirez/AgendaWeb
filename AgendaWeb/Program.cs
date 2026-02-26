@@ -1,4 +1,7 @@
 using AgendaWeb.Components;
+using AgendaWeb.Data;
+using AgendaWeb.Data.Commands;
+using AgendaWeb.Services;
 
 namespace AgendaWeb
 {
@@ -15,6 +18,12 @@ namespace AgendaWeb
             //connectionString va después del CreateBuilder y antes del build, porque es parte de la configuración que se va a usar en la aplicación, y se obtiene de la configuración del builder.
 
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+            //Inyección de dependencias
+            builder.Services.AddScoped<SQLServer>(_ => new SQLServer(connectionString));
+            builder.Services.AddScoped<ContactoCommand>();
+            builder.Services.AddScoped<ContactoServices>();
+
 
             var app = builder.Build();
 
